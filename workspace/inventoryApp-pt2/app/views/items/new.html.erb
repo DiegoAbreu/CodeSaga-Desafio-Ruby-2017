@@ -1,0 +1,26 @@
+<html>
+
+<head></head>
+
+<body>
+<h1>New Item</h1>
+
+<%= form_for :item, url: items_path do |f| %>
+<p><%= f.label :name %><br>
+<%= f.text_field :name %></p>
+
+<p><%= f.label :description %><br>
+<%= f.text_field :description %></p>
+
+<p><%= f.label :features %><br>
+<%= f.text_field :features %></p>
+
+<p><%= f.label :asset_number %><br>
+<%= f.text_field :asset_number %></p>
+
+<p><%= f.submit 'Create Item' %></p>
+
+<% end %>
+</body>
+
+</html>

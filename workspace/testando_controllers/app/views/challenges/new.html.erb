@@ -1,0 +1,17 @@
+<%= form_for @challenge do |f| %>
+  <div class='field'>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </div>
+  <div class='field'>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  </div>
+  <div class='field'>
+  <%= f.label :code_points %>
+  <%= f.text_field :code_points %>
+  </div>
+  <div class='action'>
+    <%= f.submit %>
+  </div>
+<% end %>

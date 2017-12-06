@@ -1,0 +1,13 @@
+<%= form_for @item do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :features %>
+  <%= f.text_field :features %>
+  <%= f.label :asset_number %>
+  <%= f.text_field :asset_number %>
+  <%= f.label :item_category %>
+  <%= collection_select(:item, :item_category, ItemCategory.all, :id, :name) %>
+  <%= f.submit "Create Item" %>
+<% end %>

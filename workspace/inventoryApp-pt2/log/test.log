@@ -1,0 +1,96 @@
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-22 20:12:13 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 68ms (Views: 60.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-22 20:13:22 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 19ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (4.8ms)[0m  [1mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" varchar(255), "features" varchar(255), "asset_number" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20171022221533')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/items/new" for 127.0.0.1 at 2017-10-22 20:22:21 -0200
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2017-10-22 20:22:21 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 20ms (Views: 12.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/items/new" for 127.0.0.1 at 2017-10-22 20:23:47 -0200
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2017-10-22 20:23:47 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 26ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/items/new" for 127.0.0.1 at 2017-10-22 20:28:18 -0200
+Processing by ItemsController#new as HTML
+  Rendered items/new.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 32ms (Views: 21.7ms | ActiveRecord: 0.0ms)
+Started POST "/items" for 127.0.0.1 at 2017-10-22 20:28:18 -0200
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "item"=>{"name"=>"MacBook Air", "description"=>"Apple Notebook", "features"=>"8gb, 500gb, 13\"", "asset_number"=>"134 MAC"}, "commit"=>"Create Item"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "items" ("asset_number", "created_at", "description", "features", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["asset_number", "134 MAC"], ["created_at", "2017-10-22 22:28:18.924476"], ["description", "Apple Notebook"], ["features", "8gb, 500gb, 13\""], ["name", "MacBook Air"], ["updated_at", "2017-10-22 22:28:18.924476"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/items/1
+Completed 302 Found in 37ms (ActiveRecord: 1.2ms)
+Started GET "/items/1" for 127.0.0.1 at 2017-10-22 20:28:18 -0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered items/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2017-10-22 20:28:18 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/items/new" for 127.0.0.1 at 2017-10-22 20:35:15 -0200
+Processing by ItemsController#new as HTML
+  Rendered items/new.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 28ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+Started POST "/items" for 127.0.0.1 at 2017-10-22 20:35:15 -0200
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "item"=>{"name"=>"MacBook Air", "description"=>"Apple Notebook", "features"=>"8gb, 500gb, 13\"", "asset_number"=>"134 MAC"}, "commit"=>"Create Item"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("asset_number", "created_at", "description", "features", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["asset_number", "134 MAC"], ["created_at", "2017-10-22 22:35:15.517333"], ["description", "Apple Notebook"], ["features", "8gb, 500gb, 13\""], ["name", "MacBook Air"], ["updated_at", "2017-10-22 22:35:15.517333"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/items/1
+Completed 302 Found in 13ms (ActiveRecord: 1.1ms)
+Started GET "/items/1" for 127.0.0.1 at 2017-10-22 20:35:15 -0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered items/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2017-10-22 20:35:15 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

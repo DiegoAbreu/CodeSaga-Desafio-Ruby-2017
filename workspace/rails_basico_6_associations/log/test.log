@@ -1,0 +1,1055 @@
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 233ms (Views: 230.5ms | ActiveRecord: 0.3ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/2
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/opinions/2" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  Rendered welcome/index.html.erb within layouts/application (41.0ms)
+Completed 500 Internal Server Error in 42ms
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "First op"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Second opinion"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT "opinions".* FROM "opinions"
+  Rendered welcome/index.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 5ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:45:02 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT "opinions".* FROM "opinions"
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  Rendered welcome/index.html.erb (2.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (78.8ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (13.2ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (4.9ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (27.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (3.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (9.8ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (7.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (5.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (3.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (3.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (3.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (3.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (82.9ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (3.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (5.5ms)[0m  [1mCREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) [0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150428030546')
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (158.5ms)[0m  [1mCREATE TABLE "agrees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "opinion_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (4.3ms)[0m  [1mCREATE  INDEX "index_agrees_on_opinion_id" ON "agrees" ("opinion_id")[0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "opinions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar) 
+  [1m[36m (3.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (3.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20171018154842')
+  [1m[36m (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150428030546')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by WelcomeController#index as HTML
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 224ms (Views: 221.9ms | ActiveRecord: 0.3ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "Rails is awesome!"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOpinion Load (0.3ms)[0m  [1mSELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 3.3ms | ActiveRecord: 0.3ms)
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "Rails is awesome!"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/opinions/2
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/opinions/2" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mOpinion Load (0.0ms)[0m  [1mSELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT "opinions".* FROM "opinions"
+  Rendered welcome/index.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 7ms
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "First op"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "Second opinion"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.2ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  Rendered welcome/index.html.erb within layouts/application (12.1ms)
+Completed 500 Internal Server Error in 13ms
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "Rails is awesome!"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.8ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "Rails is awesome!"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:50:18 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.2ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  Rendered welcome/index.html.erb (1.3ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 9ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 247ms (Views: 244.5ms | ActiveRecord: 0.3ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 7ms (ActiveRecord: 0.4ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/2
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/opinions/2" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mOpinion Load (0.0ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered opinions/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (43.6ms)
+Completed 200 OK in 46ms (Views: 44.8ms | ActiveRecord: 0.5ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)  [["opinion_id", 1], ["created_at", "2017-10-18 15:56:00.471726"], ["updated_at", "2017-10-18 15:56:00.471726"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 10ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["opinion_id", 1], ["created_at", "2017-10-18 15:56:00.484927"], ["updated_at", "2017-10-18 15:56:00.484927"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.2ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "First op"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Second opinion"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 8ms (ActiveRecord: 0.6ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.6ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.8ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:00 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT "opinions".* FROM "opinions"
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  Rendered welcome/index.html.erb (1.9ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:56:19 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 216ms (Views: 212.5ms | ActiveRecord: 0.4ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/2
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/opinions/2" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (39.6ms)
+Completed 200 OK in 42ms (Views: 41.0ms | ActiveRecord: 0.4ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)  [["opinion_id", 1], ["created_at", "2017-10-18 15:56:20.109430"], ["updated_at", "2017-10-18 15:56:20.109430"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 9ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["opinion_id", 1], ["created_at", "2017-10-18 15:56:20.125156"], ["updated_at", "2017-10-18 15:56:20.125156"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "First op"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Second opinion"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (2.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 7ms (ActiveRecord: 2.3ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.6ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:56:20 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT "opinions".* FROM "opinions"
+  Rendered welcome/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  Rendered welcome/index.html.erb (4.7ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:59:43 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 228ms (Views: 226.1ms | ActiveRecord: 0.3ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/2
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/opinions/2" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.2ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 22ms (Views: 21.0ms | ActiveRecord: 0.7ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)  [["opinion_id", 1], ["created_at", "2017-10-18 15:59:44.264727"], ["updated_at", "2017-10-18 15:59:44.264727"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 10ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (1.1ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 1.7ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["opinion_id", 1], ["created_at", "2017-10-18 15:59:44.290883"], ["updated_at", "2017-10-18 15:59:44.290883"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "First op"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Second opinion"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.7ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 13:59:44 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.5ms)[0m  SELECT "opinions".* FROM "opinions"
+  Rendered welcome/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  begin transaction
+  Rendered welcome/index.html.erb (2.7ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 211ms (Views: 208.5ms | ActiveRecord: 0.3ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 10ms (Views: 3.1ms | ActiveRecord: 0.2ms)
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/2
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/opinions/2" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mOpinion Load (0.0ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (38.6ms)
+Completed 200 OK in 41ms (Views: 40.0ms | ActiveRecord: 0.4ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)  [["opinion_id", 1], ["created_at", "2017-10-18 16:01:40.814706"], ["updated_at", "2017-10-18 16:01:40.814706"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 14ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.2ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["opinion_id", 1], ["created_at", "2017-10-18 16:01:40.832519"], ["updated_at", "2017-10-18 16:01:40.832519"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "First op"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Second opinion"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:01:40 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT "opinions".* FROM "opinions"
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  Rendered welcome/index.html.erb (2.5ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 204ms (Views: 202.3ms | ActiveRecord: 0.3ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.1ms)
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/2
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/opinions/2" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mOpinion Load (0.0ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (43.6ms)
+Completed 200 OK in 46ms (Views: 44.9ms | ActiveRecord: 0.4ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)  [["opinion_id", 1], ["created_at", "2017-10-18 16:05:29.502929"], ["updated_at", "2017-10-18 16:05:29.502929"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 8ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+Started POST "/opinions/1/agrees" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by AgreesController#create as HTML
+  Parameters: {"opinion_id"=>"1"}
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "agrees" ("opinion_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["opinion_id", 1], ["created_at", "2017-10-18 16:05:29.516045"], ["updated_at", "2017-10-18 16:05:29.516045"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by WelcomeController#index as HTML
+  [1m[36mOpinion Load (0.1ms)[0m  [1mSELECT "opinions".* FROM "opinions"[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "opinions" ("body") VALUES (?)[0m  [["body", "First op"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Second opinion"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT "opinions".* FROM "opinions"
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?[0m  [["opinion_id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "agrees" WHERE "agrees"."opinion_id" = ?  [["opinion_id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/opinions/new" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by OpinionsController#new as HTML
+  Rendered opinions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+Started POST "/opinions" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by OpinionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "opinion"=>{"body"=>"Rails is awesome!"}, "commit"=>"Create an opinion"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/opinions/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/opinions/1" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by OpinionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mOpinion Load (0.1ms)[0m  SELECT  "opinions".* FROM "opinions" WHERE "opinions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered opinions/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "opinions" ("body") VALUES (?)  [["body", "Rails is awesome!"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.8ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-18 14:05:29 -0200
+Processing by WelcomeController#index as HTML
+  [1m[35mOpinion Load (0.2ms)[0m  SELECT "opinions".* FROM "opinions"
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  Rendered welcome/index.html.erb (1.9ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

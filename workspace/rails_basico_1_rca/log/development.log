@@ -1,0 +1,54 @@
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-15 11:31:21 -0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /var/lib/gems/2.3.0/gems/railties-4.2.0/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 48ms (Views: 47.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-15 11:37:26 -0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /var/lib/gems/2.3.0/gems/railties-4.2.0/lib/rails/templates/rails/welcome/index.html.erb (0.0ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/welcome" for 127.0.0.1 at 2017-10-15 11:37:31 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html within layouts/application (0.3ms)
+Completed 200 OK in 244ms (Views: 243.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2017-10-15 11:37:31 -0200
+
+
+Started GET "/assets/application.self-fb28094035fc8f155b896e47c199355db7c84fc9d6214ed9800f1022ac2ece52.js?body=1" for 127.0.0.1 at 2017-10-15 11:37:31 -0200
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-15 11:39:15 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html within layouts/application (0.0ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-15 11:41:49 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2017-10-15 11:41:49 -0200
+
+
+Started GET "/assets/application.self-fb28094035fc8f155b896e47c199355db7c84fc9d6214ed9800f1022ac2ece52.js?body=1" for 127.0.0.1 at 2017-10-15 11:41:49 -0200
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-21 22:25:29 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html within layouts/application (11.8ms)
+Completed 200 OK in 512ms (Views: 511.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2017-10-21 22:25:30 -0200
+
+
+Started GET "/assets/application.self-fb28094035fc8f155b896e47c199355db7c84fc9d6214ed9800f1022ac2ece52.js?body=1" for 127.0.0.1 at 2017-10-21 22:25:30 -0200

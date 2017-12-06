@@ -1,0 +1,21 @@
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-22 00:41:38 -0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 82ms (Views: 68.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2017-10-22 00:41:38 -0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2017-10-22 00:41:38 -0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2017-10-22 00:41:38 -0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2017-10-22 00:41:38 -0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2017-10-22 00:41:38 -0200

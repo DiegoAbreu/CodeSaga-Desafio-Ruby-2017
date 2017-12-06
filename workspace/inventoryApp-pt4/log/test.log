@@ -1,0 +1,332 @@
+  [1m[36m (6.8ms)[0m  [1mCREATE TABLE "item_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (3.4ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" varchar(255), "features" text, "asset_number" varchar(255), "created_at" datetime, "updated_at" datetime, "item_category_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (3.2ms)[0m  CREATE  INDEX "index_items_on_item_category_id" ON "items" ("item_category_id")
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (3.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151119182432')
+  [1m[36m (2.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151119181949')[0m
+  [1m[35m (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151117201029')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 20:30:32.193444"], ["name", "Notebook"], ["updated_at", "2017-10-23 20:30:32.193444"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/items/new" for 127.0.0.1 at 2017-10-23 18:30:32 -0200
+Processing by ItemsController#new as HTML
+  [1m[35mItemCategory Load (0.1ms)[0m  SELECT "item_categories".* FROM "item_categories"
+  Rendered items/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 56ms (Views: 38.8ms | ActiveRecord: 0.4ms)
+Started POST "/items" for 127.0.0.1 at 2017-10-23 18:30:32 -0200
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "item"=>{"name"=>"MacBook Air", "description"=>"Apple notebook", "features"=>"8gb, 500gb, 13\"", "asset_number"=>"134 MAC", "item_category_id"=>"1"}, "commit"=>"Create Item"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "items" ("asset_number", "created_at", "description", "features", "item_category_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["asset_number", "134 MAC"], ["created_at", "2017-10-23 20:30:32.276778"], ["description", "Apple notebook"], ["features", "8gb, 500gb, 13\""], ["item_category_id", 1], ["name", "MacBook Air"], ["updated_at", "2017-10-23 20:30:32.276778"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/items/1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/items/1" for 127.0.0.1 at 2017-10-23 18:30:32 -0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItemCategory Load (0.2ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered items/show.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-23 18:30:32 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 20:30:32.315273"], ["name", "Notebook"], ["updated_at", "2017-10-23 20:30:32.315273"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 20:30:32.316869"], ["name", "Monitor"], ["updated_at", "2017-10-23 20:30:32.316869"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 20:30:32.317974"], ["name", "Cadeira"], ["updated_at", "2017-10-23 20:30:32.317974"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2017-10-23 18:30:32 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 20:31:40.468515"], ["name", "Notebook"], ["updated_at", "2017-10-23 20:31:40.468515"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/items/new" for 127.0.0.1 at 2017-10-23 18:31:40 -0200
+Processing by ItemsController#new as HTML
+  [1m[35mItemCategory Load (0.1ms)[0m  SELECT "item_categories".* FROM "item_categories"
+  Rendered items/new.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 39ms (Views: 28.2ms | ActiveRecord: 0.4ms)
+Started POST "/items" for 127.0.0.1 at 2017-10-23 18:31:40 -0200
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "item"=>{"name"=>"MacBook Air", "description"=>"Apple notebook", "features"=>"8gb, 500gb, 13\"", "asset_number"=>"134 MAC", "item_category_id"=>"1"}, "commit"=>"Create Item"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("asset_number", "created_at", "description", "features", "item_category_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["asset_number", "134 MAC"], ["created_at", "2017-10-23 20:31:40.533975"], ["description", "Apple notebook"], ["features", "8gb, 500gb, 13\""], ["item_category_id", 1], ["name", "MacBook Air"], ["updated_at", "2017-10-23 20:31:40.533975"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/items/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/items/1" for 127.0.0.1 at 2017-10-23 18:31:40 -0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItemCategory Load (0.2ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered items/show.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 11ms (Views: 8.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-23 18:31:40 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 20:31:40.565921"], ["name", "Notebook"], ["updated_at", "2017-10-23 20:31:40.565921"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 20:31:40.567586"], ["name", "Monitor"], ["updated_at", "2017-10-23 20:31:40.567586"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 20:31:40.569135"], ["name", "Cadeira"], ["updated_at", "2017-10-23 20:31:40.569135"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2017-10-23 18:31:40 -0200
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 21:05:39.237693"], ["name", "Notebook"], ["updated_at", "2017-10-23 21:05:39.237693"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/items/new" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemsController#new as HTML
+  [1m[35mItemCategory Load (0.1ms)[0m  SELECT "item_categories".* FROM "item_categories"
+  Rendered items/new.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 42ms (Views: 31.1ms | ActiveRecord: 0.4ms)
+Started POST "/items" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "item"=>{"name"=>"MacBook Air", "description"=>"Apple notebook", "features"=>"8gb, 500gb, 13\"", "asset_number"=>"134 MAC", "item_category_id"=>"1"}, "commit"=>"Create Item"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("asset_number", "created_at", "description", "features", "item_category_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["asset_number", "134 MAC"], ["created_at", "2017-10-23 21:05:39.310415"], ["description", "Apple notebook"], ["features", "8gb, 500gb, 13\""], ["item_category_id", 1], ["name", "MacBook Air"], ["updated_at", "2017-10-23 21:05:39.310415"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/items/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/items/1" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItemCategory Load (0.2ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered items/show.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 16ms (Views: 11.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (3.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/item_categories/new" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemCategoriesController#new as HTML
+  Rendered item_categories/_form.html.erb (2.8ms)
+  Rendered item_categories/new.html.erb within layouts/application (52.4ms)
+Completed 200 OK in 55ms (Views: 54.5ms | ActiveRecord: 0.0ms)
+Started POST "/item_categories" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "item_category"=>{"name"=>"Notebook"}, "commit"=>"Create Item category"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 21:05:39.412348"], ["name", "Notebook"], ["updated_at", "2017-10-23 21:05:39.412348"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/item_categories/1
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/item_categories/1" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItemCategory Load (0.1ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered item_categories/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/item_categories/new" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemCategoriesController#new as HTML
+  Rendered item_categories/_form.html.erb (1.7ms)
+  Rendered item_categories/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+Started POST "/item_categories" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "item_category"=>{"name"=>"Notebook"}, "commit"=>"Create Item category"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 21:05:39.436578"], ["name", "Notebook"], ["updated_at", "2017-10-23 21:05:39.436578"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/item_categories/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/item_categories/1" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItemCategory Load (0.1ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered item_categories/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms)
+Started GET "/item_categories/new" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemCategoriesController#new as HTML
+  Rendered item_categories/_form.html.erb (1.2ms)
+  Rendered item_categories/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started POST "/item_categories" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "item_category"=>{"name"=>"Monitor"}, "commit"=>"Create Item category"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 21:05:39.471769"], ["name", "Monitor"], ["updated_at", "2017-10-23 21:05:39.471769"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/item_categories/2
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms)
+Started GET "/item_categories/2" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by ItemCategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mItemCategory Load (0.1ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered item_categories/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by HomeController#index as HTML
+  [1m[35mItemCategory Load (0.2ms)[0m  SELECT "item_categories".* FROM "item_categories"
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (12.2ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 21:05:39.500705"], ["name", "Notebook"], ["updated_at", "2017-10-23 21:05:39.500705"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 21:05:39.514336"], ["name", "Monitor"], ["updated_at", "2017-10-23 21:05:39.514336"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 21:05:39.520928"], ["name", "Cadeira"], ["updated_at", "2017-10-23 21:05:39.520928"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2017-10-23 19:05:39 -0200
+Processing by HomeController#index as HTML
+  [1m[35mItemCategory Load (0.2ms)[0m  SELECT "item_categories".* FROM "item_categories"
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (1.8ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 21:08:57.300183"], ["name", "Notebook"], ["updated_at", "2017-10-23 21:08:57.300183"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/items/new" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemsController#new as HTML
+  [1m[35mItemCategory Load (0.1ms)[0m  SELECT "item_categories".* FROM "item_categories"
+  Rendered items/new.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 60ms (Views: 48.6ms | ActiveRecord: 0.5ms)
+Started POST "/items" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "item"=>{"name"=>"MacBook Air", "description"=>"Apple notebook", "features"=>"8gb, 500gb, 13\"", "asset_number"=>"134 MAC", "item_category_id"=>"1"}, "commit"=>"Create Item"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "items" ("asset_number", "created_at", "description", "features", "item_category_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["asset_number", "134 MAC"], ["created_at", "2017-10-23 21:08:57.386304"], ["description", "Apple notebook"], ["features", "8gb, 500gb, 13\""], ["item_category_id", 1], ["name", "MacBook Air"], ["updated_at", "2017-10-23 21:08:57.386304"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/items/1
+Completed 302 Found in 9ms (ActiveRecord: 2.0ms)
+Started GET "/items/1" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItemCategory Load (0.2ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered items/show.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/item_categories/new" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemCategoriesController#new as HTML
+  Rendered item_categories/_form.html.erb (3.3ms)
+  Rendered item_categories/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 17ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+Started POST "/item_categories" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "item_category"=>{"name"=>"Notebook"}, "commit"=>"Create Item category"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 21:08:57.448857"], ["name", "Notebook"], ["updated_at", "2017-10-23 21:08:57.448857"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/item_categories/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/item_categories/1" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItemCategory Load (0.1ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered item_categories/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Started GET "/item_categories/new" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemCategoriesController#new as HTML
+  Rendered item_categories/_form.html.erb (1.2ms)
+  Rendered item_categories/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+Started POST "/item_categories" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "item_category"=>{"name"=>"Notebook"}, "commit"=>"Create Item category"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 21:08:57.468702"], ["name", "Notebook"], ["updated_at", "2017-10-23 21:08:57.468702"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/item_categories/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/item_categories/1" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItemCategory Load (0.1ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered item_categories/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.1ms)
+Started GET "/item_categories/new" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemCategoriesController#new as HTML
+  Rendered item_categories/_form.html.erb (1.3ms)
+  Rendered item_categories/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started POST "/item_categories" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "item_category"=>{"name"=>"Monitor"}, "commit"=>"Create Item category"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 21:08:57.490459"], ["name", "Monitor"], ["updated_at", "2017-10-23 21:08:57.490459"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/item_categories/2
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+Started GET "/item_categories/2" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by ItemCategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mItemCategory Load (0.1ms)[0m  [1mSELECT  "item_categories".* FROM "item_categories"  WHERE "item_categories"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered item_categories/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by HomeController#index as HTML
+  [1m[35mItemCategory Load (0.2ms)[0m  SELECT "item_categories".* FROM "item_categories"
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 21:08:57.515544"], ["name", "Notebook"], ["updated_at", "2017-10-23 21:08:57.515544"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-10-23 21:08:57.517251"], ["name", "Monitor"], ["updated_at", "2017-10-23 21:08:57.517251"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "item_categories" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-10-23 21:08:57.519208"], ["name", "Cadeira"], ["updated_at", "2017-10-23 21:08:57.519208"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2017-10-23 19:08:57 -0200
+Processing by HomeController#index as HTML
+  [1m[35mItemCategory Load (0.2ms)[0m  SELECT "item_categories".* FROM "item_categories"
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
